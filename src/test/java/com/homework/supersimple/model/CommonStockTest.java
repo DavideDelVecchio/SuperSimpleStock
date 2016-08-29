@@ -20,7 +20,7 @@ public class CommonStockTest {
     @Test
     public void calculatePERatio() throws Exception {
             double actualResult = stock.calculatePERatio();
-            assertThat(actualResult,equalTo(-1.0));
+            assertThat(actualResult,equalTo(0.0));
 
     }
 
