@@ -15,10 +15,12 @@ Homework for project Super Simple Stocks
  This application for each stock
 
 calculate the dividend yield
+
 ii. calculate the P/E Ratio
 iii. record a trade, with timestamp, quantity of shares, buy or sell indicator and price
 iv. Calculate Stock Price based on trades recorded in past 15 minutes
-b. Calculate the GBCE All Share Index using the geometric mean of prices for all stocks
+
+Calculate the GBCE All Share Index using the geometric mean of prices for all stocks
 
 The system is initialized with the following values :
 
