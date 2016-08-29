@@ -54,15 +54,15 @@ public class Simulator {
          for (int i = 0; i < tradesNumber; i++) {
              Stock stock = stocksList.get(rand.nextInt(stocksList.size()));
 
-             Indicator tradeOperationFlag;
+             Indicator tickerIndicator;
 
-             tradeOperationFlag = Indicator.BUY;
+             tickerIndicator = Indicator.BUY;
 
 
              double price = Math.abs(Math.round(10 * (rand.nextGaussian() + 1) * 100) / 100d);
 
-             int sharesQuantity = ajustNumberOfShares(tradeRecords, tradeOperationFlag, rand);
-              tradeRecords.add(new TradeRecord.Builder().stock(stock).indicator(tradeOperationFlag).numberOfShares(sharesQuantity).price(price).timestamp(new Date()).createTradeRecord());
+             int sharesQuantity = ajustNumberOfShares(tradeRecords, tickerIndicator, rand);
+              tradeRecords.add(new TradeRecord.Builder().stock(stock).indicator(tickerIndicator).numberOfShares(sharesQuantity).price(price).timestamp(new Date()).createTradeRecord());
 
          }
            adjustTickerPrice(tradeRecords);
@@ -70,12 +70,10 @@ public class Simulator {
 
          for (Stock stock : stocksList) {
              List<TradeRecord> tradeForStock = filterStocks(stock,tradeRecords);
-             // Ticker price is the difference between last price and oldest price
-             // Trade, in the LinkedList, are stored in chronological order, from oldest to most recent
              double tickerPrice = tradeForStock.get(tradeForStock.size() - 1).getPrice() - tradeForStock.get(0).getPrice();
              String stockSymbol = stock.getSymbol();
 
-             //stock.setTickerPrice(tickerPrice);
+
              double dividendYield = stock.calculateDividendYeld();
              System.out.println("Dividend Yield for " + stockSymbol + ": " + df.format(dividendYield));
              System.out.println("P/E Ratio for " + stockSymbol + ": " + df.format(stock.calculatePERatio()));
