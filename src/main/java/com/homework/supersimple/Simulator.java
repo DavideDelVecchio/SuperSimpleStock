@@ -61,7 +61,7 @@ public class Simulator {
 
              double price = Math.abs(Math.round(10 * (rand.nextGaussian() + 1) * 100) / 100d);
 
-             int sharesQuantity = ajustNumberOfShares(tradeRecords, tickerIndicator, rand);
+             int sharesQuantity = adjustNumberOfShares(tradeRecords, tickerIndicator, rand);
               tradeRecords.add(new TradeRecord.Builder().stock(stock).indicator(tickerIndicator).numberOfShares(sharesQuantity).price(price).timestamp(new Date()).createTradeRecord());
 
          }
@@ -86,7 +86,7 @@ public class Simulator {
 
      }
 
-    private static int ajustNumberOfShares(List<TradeRecord> stockTradesList, Indicator tradeOperationFlag, Random rand) {
+    private static int adjustNumberOfShares(List<TradeRecord> stockTradesList, Indicator tradeOperationFlag, Random rand) {
         int result = rand.nextInt(1000);
 
         int totalShares = 0;
